@@ -126,7 +126,7 @@ function showCatDetails() {
                     url: "/categories/campionamenti",
                     type: "POST",
                     data: {
-                        titolo: title
+                        title: title
                     },
                     dataSrc: "data"
                 },
@@ -134,7 +134,7 @@ function showCatDetails() {
                     {
                         "mData": "_id"
                     }, {
-                        "mData": "titolo"
+                        "mData": "title"
                     }, {
                         "mData": "categoria"
                     }, {
@@ -158,7 +158,7 @@ function showCatDetails() {
                     url: "/categories/campionamenti",
                     type: "POST",
                     data: {
-                        titolo: title
+                        title: title
                     },
                     dataSrc: "data"
                 },
@@ -166,7 +166,7 @@ function showCatDetails() {
                     {
                         "mData": "_id"
                     }, {
-                        "mData": "titolo"
+                        "mData": "title"
                     }, {
                         "mData": "categoria"
                     }, {

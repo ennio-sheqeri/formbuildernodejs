@@ -3,9 +3,29 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+var config = require('./config');
+
+
+
+// Connection Mongoose
+mongoose.Promise = require('bluebird');
+
+mongoose.connect(config.mongodb).then(function(){
+
+  //connected successfully
+}, function(err) {
+  if (err) {
+    console.log(err);
+  }
+});
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var admin = require('./routes/admin');
+var categories = require('./routes/category');
+var home = require('./routes/home');
 
 var app = express();
 
@@ -21,6 +41,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/adminFormsCreate', admin);
+app.use('/categories', categories);
+app.use('/home' , home);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -23,7 +23,7 @@ $(document).ready(function(){
             {
                 "mData": "_id"
             }, {
-                "mData": "titolo"
+                "mData": "titlo"
             },{
                 "mData": "categoria"
             }, {
@@ -318,7 +318,7 @@ $(document).ready(function(){
                         {
                             "mData": "_id"
                         }, {
-                            "mData": "titolo"
+                            "mData": "title"
                         },{
                             "mData": "categoria"
                         }, {
@@ -418,7 +418,7 @@ $(document).ready(function(){
                      $('.loader').addClass('hidden');
                      editForm = data[0].campionamento[0];
                      $('#edit-form').removeClass('hidden');
-                     $('.edit-camp-titolo').text('').text(data[0].titolo);
+                     $('.edit-camp-title').text('').text(data[0].titolo);
                      $('#edit-id').val(data[0]._id);
 
                      $('.edit-fb-render').formRender({
@@ -437,7 +437,7 @@ $(document).ready(function(){
                          $('.edit-fb-render').hide();
                          $('.form-editing').show();
 
-                         $('#camp-edit-title').val(data[0].titolo);
+                         $('#camp-edit-title').val(data[0].title);
 
 
                          var template = $('.fb-editor');
@@ -492,7 +492,7 @@ $(document).ready(function(){
                      {
                          "mData": "_id"
                      }, {
-                         "mData": "titolo"
+                         "mData": "title"
                      },{
                          "mData": "categoria"
                      }, {
@@ -574,7 +574,7 @@ function saveForm(formData) {
 
     if( titleVal == '' ) {
         swal({
-            title: "Sicurati che il titolo non e vuoto",
+            title: "Make sure the title is not empty",
             type: "warning"
         })
     }

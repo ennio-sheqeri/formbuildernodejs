@@ -61,7 +61,7 @@ function saveForms(formData) {
 
     if( titleVal == '' ) {
         swal({
-            title: "Sicurati che il titolo non e vuoto",
+            title: "Make sure the title is not empty",
             type: "warning"
         })
     }

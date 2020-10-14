@@ -13,7 +13,7 @@ $(document).ready(function(){
                     $.ajax({
                         url : 'home/get-campionamenti',
                         type: 'post',
-                        success: function (campionamenti) {
+                        success: function (forms) {
                             for(var z = 0 ; z < userRoles[0].categoriesToShow.length ; z++ ) {
                                 for(var i = 0 ; i < categories.length; i ++) {
                                     if(userRoles[0].categoriesToShow[z] == 'None Selected') {
@@ -23,9 +23,9 @@ $(document).ready(function(){
                                         result += '</div>'
                                         result += '<div class="box-body">'
                                         result += '<ul id="ul_o list-append" style="list-style: none">'
-                                        for(var j = 0 ; j < campionamenti.length; j++){
-                                            if(categories[i].categoryName == campionamenti[j].categoria) {
-                                                result += '<li><a id="'+campionamenti[j]._id+'" class="get-id" >'+campionamenti[j].titolo+'</a></li>'
+                                        for(var j = 0 ; j < forms.length; j++){
+                                            if(categories[i].categoryName == forms[j].categoria) {
+                                                result += '<li><a id="'+forms[j]._id+'" class="get-id" >'+forms[j].title+'</a></li>'
 
                                             }
                                         }
@@ -44,7 +44,7 @@ $(document).ready(function(){
                                             result += '<ul id="ul_o list-append" style="list-style: none">'
                                             for(var j = 0 ; j < campionamenti.length; j++){
                                                 if(categories[i].categoryName == campionamenti[j].categoria) {
-                                                    result += '<li><a id="'+campionamenti[j]._id+'" class="get-id" >'+campionamenti[j].titolo+'</a></li>'
+                                                    result += '<li><a id="'+campionamenti[j]._id+'" class="get-id" >'+campionamenti[j].title+'</a></li>'
 
                                                 }
                                             }
@@ -58,7 +58,7 @@ $(document).ready(function(){
                                 }
                             }
                             $('#append-js').on('click' , '.get-id' , function () {
-                                $('#campionamento-rendered').removeClass('hidden');
+                                $('#forms-rendered').removeClass('hidden');
                                 $('#user-filled-data').addClass('hidden');
                                 labelsAndNames.length = 0;
                                 var id = $(this).attr('id');
@@ -70,7 +70,7 @@ $(document).ready(function(){
                                     },
                                     success: function (response) {
 
-                                        $('.camp-titolo').text('').text(response[0].titolo);
+                                        $('.camp-title').text('').text(response[0].title);
 
                                         var categoryId = response[0]._id;
 
@@ -96,7 +96,7 @@ $(document).ready(function(){
                                             type: 'post',
                                             data: {
                                                 id: labelsAndNames.catId,
-                                                titolo : $('.camp-titolo').text()
+                                                title : $('.camp-title').text()
                                             },
                                             success: function (data) {
                                                 $('#get-number-of-filled').html(data.data)
@@ -144,7 +144,7 @@ $(document).ready(function(){
             type: 'post',
             data: {
                 formdata : jsonCampCreato,
-                title : $('.camp-titolo').text(),
+                title : $('.camp-title').text(),
                 CampId: labelsAndNames.catId
             },
             success : function (salvato) {
@@ -157,7 +157,7 @@ $(document).ready(function(){
     });
     
     $('#get-number-of-filled').on('click' , function () {
-        $('#campionamento-rendered').addClass('hidden');
+        $('#forms-rendered').addClass('hidden');
         $('#user-filled-data').removeClass('hidden');
 
         if ( $.fn.DataTable.isDataTable( '#compilati-table-by-user' ) ) {
@@ -256,7 +256,7 @@ $(document).ready(function(){
         }
 
         $('#go-back').on('click' , function () {
-            $('#campionamento-rendered').removeClass('hidden');
+            $('#forms-rendered').removeClass('hidden');
             $('#user-filled-data').addClass('hidden');
         })
 
