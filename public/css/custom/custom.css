@@ -1,0 +1,42 @@
+.get-id {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#append-js li {
+    margin: 5px 0;
+}
+
+.user-header {
+    height: 110px !important;
+}
+
+.loader {
+    /* Light grey */
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+}
+
+span.multiselect-native-select .btn-group {
+    width: 30%;
+}
+span.multiselect-native-select .btn-group button{
+    width: 100%;
+}
+
+.multiselect-container {
+    width: 30%;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

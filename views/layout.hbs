@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FormBuilder</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="dist/bootstrap/dist/css/bootstrap.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="css/_all-skins.min.css">
+    <link rel="stylesheet" href="dist/jquery-ui-1.12.0/jquery-ui.min.css">
+    <!--  DataTables-->
+    <link rel="stylesheet" type="text/css" href="css\plugins\dataTables\datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="css\plugins\dataTables\jquery.dataTables.min.css">
+    <link rel="stylesheet" href="dist/select2/select2.min.css" >
+    <link rel="stylesheet" href="css/select2-bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="dist/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="dist/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="plugins/formBuilder/src/form-builder.css">
+    <link rel="stylesheet" href="plugins/alerts/sweetalert.css">
+    <link rel="stylesheet" href="css/plugins/daterangepicker/daterangepicker-bs3.css">
+
+    <link href="css/bootstrap-toggle.css" rel="stylesheet">
+    <link href="css/bootstrap-multiselect.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom/custom.css">
+</head>
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+
+<body class="hold-transition skin-yellow layout-top-nav">
+<div class="wrapper">
+    <header class="main-header">
+        <nav class="navbar navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand"><b>Form</b>Builder</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+
+                        <ul id="navigator" class="nav navbar-nav">
+                            <li class="active"><a href="/home">Forms <span class="sr-only">(current)</span></a></li>
+                        </ul>
+                    <ul id="navifator" class="nav navbar-nav">
+                        <li class="active"><a href="/">Build Form <span class="sr-only">(current)</span></a> </li>
+                    </ul>
+
+                </div>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="https://robohash.org/USER" class="user-image">
+                                <span class="hidden-xs" id="user-name">admin</span>
+                                <span class="hidden" id="user-ccmsid">admin admin</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="https://robohash.org/admin" class="user-image">
+                                    <p>
+                                        <!--{{name}}-->
+                                        admin
+                                    </p>
+                                </li>
+                                <!--
+                                {{#if admin}}
+                                    <li ><a href="/FormsBuilder">Admin FormsBuilder <span class="sr-only">(current)</span></a></li>
+                                    <li ><a href="/category">Category</a></li>
+                                    <li ><a href="/users">Users</a></li>
+                                {{/if}}-->
+
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-custom-menu -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <!-- Full Width Column -->
+    <div class="content-wrapper">
+        <div class="container">
+            {{{body}}}
+            <!-- Main content -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="container">
+            <strong>Copyright &copy; 2020 <a href="#"></a>.</strong> All rights reserved.
+        </div>
+        <!-- /.container -->
+    </footer>
+</div>
+<!-- ./wrapper -->
+<!-- jQuery 2.1.4 -->
+<script src="dist/jquery/dist/jQuery-2.1.4.min.js"></script>
+<script src="dist/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="dist/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="dist/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="dist/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- AdminLTE App -->
+<script src="js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- Data Tables-->
+<script type="text/javascript" src="dist/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="dist/datatables/dataTables.bootstrap.min.js"></script>
+<script src="dist/datatables/extensions/Buttons/js/dataTables.buttons.min.js" charset="utf-8"></script>
+<script src="dist/datatables/extensions/Buttons/js/buttons.bootstrap.min.js" charset="utf-8"></script>
+<script src="dist/datatables/extensions/Buttons/js/buttons.print.min.js" charset="utf-8"></script>
+<script src="dist/datatables/extensions/Buttons/js/buttons.html5.min.js" charset="utf-8"></script>
+<script src="dist/datatables/extensions/Buttons/js/buttons.colVis.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="dist/chart.js/dist/Chart.min.js"></script>
+<script src="dist/moment/min/moment.min.js" ></script>
+<script src="dist/bootstrap-datetimepicker-master/src/js/bootstrap-datetimepicker.js"></script>
+<script src="dist/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="dist/select2/select2.full.min.js" charset="utf-8"></script>
+<script src="dist/jquery-validation/dist/jquery.validate.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="dist/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+{{!-- Home View script --}}
+<script src="js/bootstrap-toggle.js"></script>
+
+<!--<script src="js/custom/form-builder.js"></script>-->
+
+<script src="plugins/formBuilder/dist/form-builder.min.js"></script>
+<script src="plugins/formBuilder/dist/form-render.min.js"></script>
+
+<script src="js/custom/formbuilder.js"></script>
+<script src="js/custom/categories.js"></script>
+<script src="js/custom/showCampionamenti.js"></script>
+<script src="js/custom/formRendering.js"></script>
+<script src="js/custom/userDetails.js"></script>
+<script src="plugins/alerts/sweetalert.min.js"></script>
+<script src="js/handlebars.js"></script>
+<script src="js/bootstrap-multiselect.js"></script>
+
+
+<script src="js/lodash.min.js"></script>
+
+<script>
+    var curr = window.location.pathname;
+    $("#navbar-collapse").find(".active").removeClass("active");
+    $("#navbar-collapse a").each(function() {
+        var href = $(this).attr('href');
+        if (curr == href) {
+            $(this).parent().addClass("active");
+        }
+    });
+</script>
+
+<script>$('#all-users').off().on('click' , '.toggle-group' , function () {
+    $('.isAdmin').change(function () {
+        var id = $(this).closest('tr').find('td:first-of-type').text();
+        var isAdmin = $(this).prop('checked');
+        $.post("/users/update-admin", {
+            id: id,
+            isAdmin: isAdmin
+        }).done(function (data) {
+            if (data === 'ok') {
+                location.reload();
+            }
+            else {
+                swal('Error in db');
+            }
+        });
+    });
+});</script>
+
+</body>
+
+</html>
