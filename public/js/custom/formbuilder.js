@@ -19,22 +19,22 @@ $(document).ready(function(){
 
     $('#adminaddnewCategory').on('click' , function () {
         $.ajax({
-            url: '/adminCreazione/newCategory',
+            url: '/adminFormsCreate/newCategory',
             type: 'Post',
             data: {
                 adminnameCa : $('#admintextNome').val(),
                 adminCatPublished : $('#adminCatPublished').val()
             },
             success : function (exist) {
-                if(exist == 'Categoria e stato creato') {
-                    $('#adminCreazioneCat').modal('hide');
+                if(exist == 'Create a category') {
+                    $('#adminCreateCat').modal('hide');
                     swal(exist);
                     $('.confirm').on('click' , function () {
                         location.reload();
                     })
                 }
-                else if (exist == 'E stato un problema nell creazione della categoria'){
-                    $('#adminCreazioneCat').modal('hide');
+                else if (exist == 'Error during category creation'){
+                    $('#adminCreateCat').modal('hide');
                     swal(exist);
                     $('.confirm').on('click' , function () {
                         location.reload();
@@ -69,7 +69,7 @@ function saveForms(formData) {
         $.ajax({
 
             type: "POST",
-            url: "/adminCreazione/save",
+            url: "/adminFormsCreate/save",
             data: {
                 "htmlForm": formData,
                 "title": titleVal,
@@ -78,7 +78,7 @@ function saveForms(formData) {
             },
             success: function (exist) {
                 swal(exist);
-                if(exist == 'Campionamento esiste sull database') {
+                if(exist == 'Form exist in DB') {
                     //do nothing
                 }
                 else {

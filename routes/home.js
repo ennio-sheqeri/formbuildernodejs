@@ -56,15 +56,15 @@ router.post('/saveFilledForm' , function (req, res, next) {
     var title = req.body.title;
     var campId = req.body.CampId;
 
-    var fromsComplited = new FromsComplited ({
+    var fromComplited = new FromsComplited ({
         title : title,
-        formscomplite : data,
+        formcomplite : data,
         categoryId : campId,
         createdBy : req.user.name,
         manager: req.user.manager
     });
     var save;
-    fromsComplited.save(function (err) {
+    fromComplited.save(function (err) {
 
         if(err) {
             console.log(err);
@@ -103,7 +103,7 @@ router.post('/get-filled' , function (req, res, next) {
     var id = req.body.id;
 
     FromsComplited.find(
-        {categoryId : id , createdBy : req.user.name} , {romsComplited : 1 ,  _id: 0}
+        {categoryId : id , createdBy : req.user.name} , {formcomplite : 1 ,  _id: 0}
     ).lean().exec(function (err , results) {
         if(err) {
             console.log(err)

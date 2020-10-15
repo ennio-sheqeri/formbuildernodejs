@@ -5,7 +5,7 @@ var timestamps = require('mongoose-timestamp');
 
 var formscompSchema = new Schema({
     title : String,
-    formscomplite : Array,
+    formcomplite : Array,
     createdBy: String,
     categoryId : String,
     manager: String

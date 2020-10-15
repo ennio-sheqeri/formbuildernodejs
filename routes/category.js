@@ -101,7 +101,7 @@ router.post('/get-all' , function (req, res, next) {
 router.post('/forms' , function (req, res, next) {
     var title = req.body.title;
     Forms.find({
-        categoria : title
+        category : title
     }).lean().exec(function (err, result) {
         if(err){
             console.log(err)

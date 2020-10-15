@@ -1,19 +1,20 @@
 $(document).ready(function(){
     var labelsAndNames = [];
-    var campCreato = [];
+    var FormCreate = [];
 
     $.ajax({
         url : 'home/get-users',
         type: 'post',
         success : function (userRoles) {
             $.ajax({
-                url: 'home/get-categories',
+                url: 'home/get-category',
                 type: 'post',
                 success : function (categories) {
                     $.ajax({
-                        url : 'home/get-campionamenti',
+                        url : 'home/get-forms',
                         type: 'post',
                         success: function (forms) {
+
                             for(var z = 0 ; z < userRoles[0].categoriesToShow.length ; z++ ) {
                                 for(var i = 0 ; i < categories.length; i ++) {
                                     if(userRoles[0].categoriesToShow[z] == 'None Selected') {
@@ -24,7 +25,7 @@ $(document).ready(function(){
                                         result += '<div class="box-body">'
                                         result += '<ul id="ul_o list-append" style="list-style: none">'
                                         for(var j = 0 ; j < forms.length; j++){
-                                            if(categories[i].categoryName == forms[j].categoria) {
+                                            if(categories[i].categoryName == forms[j].category) {
                                                 result += '<li><a id="'+forms[j]._id+'" class="get-id" >'+forms[j].title+'</a></li>'
 
                                             }
@@ -42,9 +43,9 @@ $(document).ready(function(){
                                             result += '</div>'
                                             result += '<div class="box-body">'
                                             result += '<ul id="ul_o list-append" style="list-style: none">'
-                                            for(var j = 0 ; j < campionamenti.length; j++){
-                                                if(categories[i].categoryName == campionamenti[j].categoria) {
-                                                    result += '<li><a id="'+campionamenti[j]._id+'" class="get-id" >'+campionamenti[j].title+'</a></li>'
+                                            for(var j = 0 ; j < forms.length; j++){
+                                                if(categories[i].categoryName == forms[j].category) {
+                                                    result += '<li><a id="'+forms[j]._id+'" class="get-id" >'+forms[j].title+'</a></li>'
 
                                                 }
                                             }
@@ -78,9 +79,9 @@ $(document).ready(function(){
 
                                         $('.fb-render').formRender({
                                             dataType: 'json',
-                                            formData: response[0].campionamento[0]
+                                            formData: response[0].formcomplite[0]
                                         });
-                                        var arrayCamp = JSON.parse(response[0].campionamento[0]);
+                                        var arrayCamp = JSON.parse(response[0].formcomplite[0]);
                                         console.log(arrayCamp);
                                         for(var i = 0; i < arrayCamp.length; i++) {
                                             const pushCamp = {};
@@ -133,22 +134,22 @@ $(document).ready(function(){
         input['Creato Da'] = $('#user-name').text();
         input['CCMS ID'] = $('#user-ccmsid').text();
         input['Creato A'] = new Date();
-        campCreato.push(input );
+        FormCreate.push(input );
 
 
 
-        var jsonCampCreato = JSON.stringify(campCreato[0]);
+        var jsonFormCreate = JSON.stringify(FormCreate[0]);
 
         $.ajax({
             url: 'home/saveFilledForm',
             type: 'post',
             data: {
-                formdata : jsonCampCreato,
+                formdata : jsonFormCreate,
                 title : $('.camp-title').text(),
                 CampId: labelsAndNames.catId
             },
-            success : function (salvato) {
-                swal(salvato);
+            success : function (save) {
+                swal(save);
                 $('.confirm').on('click' , function () {
                     location.reload();
                 })
@@ -177,11 +178,11 @@ $(document).ready(function(){
 
                     var firstItem = [];
 
-                    firstItem.push(JSON.parse(result.data[0].campionamentoCompilato[0]));
+                    firstItem.push(JSON.parse(result.data[0].formcomplite[0]));
                     for (var o = 0; o < result.data.length; o++) {
 
                         if (o > 0 && o < result.data.length) {
-                            const item2 = (JSON.parse(result.data[o].campionamentoCompilato[0]));
+                            const item2 = (JSON.parse(result.data[o].formcomplite[0]));
                             firstItem.push(item2);
 
                         }
@@ -224,11 +225,11 @@ $(document).ready(function(){
                 success : function (result) {
                     var firstItem = [];
 
-                    firstItem.push(JSON.parse(result.data[0].campionamentoCompilato[0]));
+                    firstItem.push(JSON.parse(result.data[0].formcomplite[0]));
                     for (var o = 0; o < result.data.length; o++) {
 
                         if (o > 0 && o < result.data.length) {
-                            const item2 = (JSON.parse(result.data[o].campionamentoCompilato[0]));
+                            const item2 = (JSON.parse(result.data[o].formcomplite[0]));
                             firstItem.push(item2);
 
                         }

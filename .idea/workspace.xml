@@ -20,25 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bcc1157-14d1-4c30-920d-7104f2ca2ea4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/category.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/createform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/formscomplited.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/category.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/newform.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/BuilderForms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/createfoms.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/formscomplited.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/formscomplited.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom/categories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/custom/formRendering.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom/formRendering.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/custom/formbuilder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom/formbuilder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/custom/showCampionamenti.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom/showCampionamenti.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/custom/showCampionamenti.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/custom/showForms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/newform.hbs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Form" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -84,8 +79,16 @@
       <updated>1602625289039</updated>
       <workItem from="1602625290903" duration="1491000" />
       <workItem from="1602628184806" duration="1326000" />
-      <workItem from="1602664155512" duration="17843000" />
+      <workItem from="1602664155512" duration="37227000" />
     </task>
+    <task id="LOCAL-00001" summary="create home">
+      <created>1602694533470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602694533470</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,45 +99,64 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create home" />
+    <option name="LAST_COMMIT_MESSAGE" value="create home" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1602692423756">
-      <screen x="0" y="0" width="1366" height="548" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602749045807">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602749045807" />
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom" timestamp="1602755486475">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.548@0.0.1366.548" timestamp="1602692423756" />
     <state width="1323" height="261" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602687823714" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1602692423755">
-      <screen x="0" y="0" width="1366" height="548" />
+    <state width="1877" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602755486475" />
+    <state width="1877" height="215" key="GridCell.Tab.0.center" timestamp="1602755486475">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.548@0.0.1366.548" timestamp="1602692423755" />
     <state width="1323" height="261" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602687823714" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1602692423755">
-      <screen x="0" y="0" width="1366" height="548" />
+    <state width="1877" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602755486475" />
+    <state width="1877" height="215" key="GridCell.Tab.0.left" timestamp="1602755486474">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.548@0.0.1366.548" timestamp="1602692423755" />
     <state width="1323" height="261" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602687823714" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1602692423756">
-      <screen x="0" y="0" width="1366" height="548" />
+    <state width="1877" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602755486474" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right" timestamp="1602755486475">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.548@0.0.1366.548" timestamp="1602692423756" />
     <state width="1323" height="261" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602687823714" />
-    <state x="605" y="0" width="585" height="548" key="find.popup" timestamp="1602694393083">
-      <screen x="0" y="0" width="1366" height="548" />
+    <state width="1877" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602755486475" />
+    <state x="805" y="0" width="823" height="1040" key="find.popup" timestamp="1602766397543">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="605" y="0" width="585" height="548" key="find.popup/0.0.1366.548@0.0.1366.548" timestamp="1602694393083" />
+    <state x="805" y="0" width="823" height="1040" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602766397543" />
     <state x="460" y="38" key="refactoring.ChangeSignatureDialog" timestamp="1602693650711">
       <screen x="0" y="0" width="1366" height="548" />
     </state>
     <state x="460" y="38" key="refactoring.ChangeSignatureDialog/0.0.1366.548@0.0.1366.548" timestamp="1602693650711" />
-    <state x="339" y="122" key="run.anything.popup" timestamp="1602694349449">
+    <state x="339" y="122" key="run.anything.popup" timestamp="1602695442960">
       <screen x="0" y="0" width="1366" height="548" />
     </state>
-    <state x="339" y="122" key="run.anything.popup/0.0.1366.548@0.0.1366.548" timestamp="1602694349449" />
+    <state x="339" y="122" key="run.anything.popup/0.0.1366.548@0.0.1366.548" timestamp="1602695442960" />
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602689686878" />
     <state x="4" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602684355186">
       <screen x="0" y="0" width="1366" height="728" />

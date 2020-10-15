@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    var table = $('#campionamenti_creati').DataTable({
+    var table = $('#created_forms').DataTable({
         "paging": true,
         "searching": true,
         "ordering": true,
@@ -14,7 +14,7 @@ $(document).ready(function(){
         "pageLength": 30,
         responsive: true,
         ajax: {
-            url: "/campionamenti/get-all",
+            url: "/builderForms/get-all",
             type: "POST",
             dataSrc: "data"
         },
@@ -23,9 +23,9 @@ $(document).ready(function(){
             {
                 "mData": "_id"
             }, {
-                "mData": "titlo"
+                "mData": "title"
             },{
-                "mData": "categoria"
+                "mData": "category"
             }, {
                 "mData": "createdBy"
             }, {
@@ -35,21 +35,21 @@ $(document).ready(function(){
                 "mData": null,
                 "bSortable": false,
                 "mRender": function (o) {
-                    return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="SI" data-off="NO"></td>'
+                    return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="Yes" data-off="NO"></td>'
                 }
             },
             {
                 "mData": null,
                 "bSortable": false,
                 "mRender": function (o) {
-                    return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> Piu Dettagli</button>'
+                    return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> hape</button>'
                 }
             },
             {
                 "mData": null,
                 "bSortable": false,
                 "mRender": function (o) {
-                    return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Modifica</button>'
+                    return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Edit</button>'
                 }
             }
         ],
@@ -60,12 +60,12 @@ $(document).ready(function(){
 
 
 
-    $('#campionamenti_creati').off().on('click' , '.toggle-group' , function () {
+    $('#created_forms').off().on('click' , '.toggle-group' , function () {
         $('.isPublished').change(function () {
 
             var id = $(this).closest('tr').find('td:first-of-type').text();
             var isPublished = $(this).prop('checked');
-            $.post("/campionamenti/update-published", {
+            $.post("/builderForms/update-published", {
                 id: id,
                 isPublished: isPublished
             }).done(function (data) {
@@ -73,7 +73,7 @@ $(document).ready(function(){
                     location.reload();
                 }
                 else {
-                    swal('Errore con il database');
+                    swal('Error in DB!');
                 }
             });
         });
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
     function showDetails() {
 
-        $('#campionamenti_creati').off().on('click', '.toogle-modal' , function () {
+        $('#created_forms').off().on('click', '.toogle-modal' , function () {
 
             function cb(start, end) {
                 $('#fromToRangeWage span').html(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
@@ -106,7 +106,7 @@ $(document).ready(function(){
             $.fn.dataTable.ext.errMode = 'none';
 
             $.ajax({
-                url: "/campionamenti/get-filled",
+                url: "/builderForms/get-filled",
                 type: 'post',
                 data:  {
                     "id" : id,
@@ -116,23 +116,23 @@ $(document).ready(function(){
 
                 success : function (result) {
                     if(result.data.length == 0) {
-                        swal("Nessun dato e stato inserito");
-                        $('#compilati-table-box').addClass('hidden');
+                        swal("No data Inserted");
+                        $('#form-table-box').addClass('hidden');
                     }
                     else {
-                        if ( $.fn.DataTable.isDataTable( '#compilati-table' ) ) {
-                            $('#compilati-table').DataTable().destroy();
-                            $('#compilati-table').empty();
+                        if ( $.fn.DataTable.isDataTable( '#forms-table' ) ) {
+                            $('#forms-table').DataTable().destroy();
+                            $('#forms-table').empty();
                         }
                         $('#first-box').hide();
-                        $('#compilati-table-box').removeClass('hidden');
+                        $('#form-table-box').removeClass('hidden');
                         var firstItem = [];
 
-                        firstItem.push(JSON.parse(result.data[0].campionamentoCompilato[0]));
+                        firstItem.push(JSON.parse(result.data[0].formcomplite[0]));
                         for (var o = 0; o < result.data.length; o++) {
 
                             if (o > 0 && o < result.data.length) {
-                                const item2 = (JSON.parse(result.data[o].campionamentoCompilato[0]));
+                                const item2 = (JSON.parse(result.data[o].formcomplite[0]));
                                 firstItem.push(item2);
                             }
 
@@ -144,7 +144,7 @@ $(document).ready(function(){
                             my_item.title = key;
                             my_columns.push(my_item);
                         });
-                        var table = $('#compilati-table').on( 'error.dt', function ( e, settings, techNote, message ) {
+                        var table = $('#forms-table').on( 'error.dt', function ( e, settings, techNote, message ) {
                             console.log( 'An error has been reported by DataTables: ', message );
                         } ).DataTable({
                             "paging": true,
@@ -161,7 +161,7 @@ $(document).ready(function(){
                             data: firstItem,
                             "columns": my_columns
                         });
-                        $('#compilati-table tbody').on('click' , 'tr' , function () {
+                        $('#forms-table tbody').on('click' , 'tr' , function () {
                             if ( $(this).hasClass('selected') ) {
                                 $(this).removeClass('selected');
                             }
@@ -173,7 +173,7 @@ $(document).ready(function(){
                                 $('#deleteRow').click( function () {
 
                                     $.ajax({
-                                        url: 'campionamenti/delete-item',
+                                        url: 'builderForms/delete-item',
                                         type: 'post',
                                         data : {
                                             time: time,
@@ -199,7 +199,7 @@ $(document).ready(function(){
                 $.fn.dataTable.ext.errMode = 'none';
 
                 $.ajax({
-                    url: "/campionamenti/get-filled",
+                    url: "/builderForms/get-filled",
                     type: 'post',
                     data:  {
                         "id" : id,
@@ -209,23 +209,23 @@ $(document).ready(function(){
 
                     success : function (result) {
                         if(result.data.length == 0) {
-                            swal("Nessun dato e stato inserito");
-                            $('#compilati-table tbody').empty();
+                            swal("No data Insert in DB");
+                            $('#forms-table tbody').empty();
                         }
                         else {
-                            if ( $.fn.DataTable.isDataTable( '#compilati-table' ) ) {
-                                $('#compilati-table').DataTable().destroy();
-                                $('#compilati-table').empty();
+                            if ( $.fn.DataTable.isDataTable( '#forms-table' ) ) {
+                                $('#forms-table').DataTable().destroy();
+                                $('#forms-table').empty();
                             }
                             $('#first-box').hide();
-                            $('#compilati-table-box').removeClass('hidden');
+                            $('#form-table-box').removeClass('hidden');
                             var firstItem = [];
 
-                            firstItem.push(JSON.parse(result.data[0].campionamentoCompilato[0]));
+                            firstItem.push(JSON.parse(result.data[0].formcomplite[0]));
                             for (var o = 0; o < result.data.length; o++) {
 
                                 if (o > 0 && o < result.data.length) {
-                                    const item2 = (JSON.parse(result.data[o].campionamentoCompilato[0]));
+                                    const item2 = (JSON.parse(result.data[o].formcomplite[0]));
                                     firstItem.push(item2);
                                 }
 
@@ -237,7 +237,7 @@ $(document).ready(function(){
                                 my_item.title = key;
                                 my_columns.push(my_item);
                             });
-                            var table = $('#compilati-table').on( 'error.dt', function ( e, settings, techNote, message ) {
+                            var table = $('#forms-table').on( 'error.dt', function ( e, settings, techNote, message ) {
                                 console.log( 'An error has been reported by DataTables: ', message );
                             } ).DataTable({
                                 "paging": true,
@@ -254,7 +254,7 @@ $(document).ready(function(){
                                 data: firstItem,
                                 "columns": my_columns
                             });
-                            $('#compilati-table tbody').on('click' , 'tr' , function () {
+                            $('#forms-table tbody').on('click' , 'tr' , function () {
                                 if ( $(this).hasClass('selected') ) {
                                     $(this).removeClass('selected');
                                 }
@@ -266,7 +266,7 @@ $(document).ready(function(){
                                     $('#deleteRow').click( function () {
 
                                         $.ajax({
-                                            url: 'campionamenti/delete-item',
+                                            url: 'builderForms/delete-item',
                                             type: 'post',
                                             data : {
                                                 time: time,
@@ -291,11 +291,11 @@ $(document).ready(function(){
 
 
             $('#go-back-onDetails').off().on('click' , function () {
-                $('#compilati-table-box').addClass('hidden');
+                $('#form-table-box').addClass('hidden');
                 $('#first-box').show();
-                $('#campionamenti_creati').DataTable().destroy();
-                $('#campionamenti_creati tbody').empty();
-                var table = $('#campionamenti_creati').DataTable({
+                $('#created_forms').DataTable().destroy();
+                $('#created_forms tbody').empty();
+                var table = $('#created_forms').DataTable({
                     "paging": true,
                     "searching": true,
                     "ordering": true,
@@ -309,7 +309,7 @@ $(document).ready(function(){
                     "pageLength": 30,
                     responsive: true,
                     ajax: {
-                        url: "/campionamenti/get-all",
+                        url: "/builderForms/get-all",
                         type: "POST",
                         dataSrc: "data"
                     },
@@ -320,7 +320,7 @@ $(document).ready(function(){
                         }, {
                             "mData": "title"
                         },{
-                            "mData": "categoria"
+                            "mData": "category"
                         }, {
                             "mData": "createdBy"
                         }, {
@@ -330,21 +330,21 @@ $(document).ready(function(){
                             "mData": null,
                             "bSortable": false,
                             "mRender": function (o) {
-                                return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="SI" data-off="NO"></td>'
+                                return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="YES" data-off="NO"></td>'
                             }
                         },
                         {
                             "mData": null,
                             "bSortable": false,
                             "mRender": function (o) {
-                                return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> Piu Dettagli</button>'
+                                return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> hape</button>'
                             }
                         },
                         {
                             "mData": null,
                             "bSortable": false,
                             "mRender": function (o) {
-                                return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Modifica</button>'
+                                return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Edit</button>'
                             }
                         }
                     ],
@@ -352,12 +352,12 @@ $(document).ready(function(){
                         initTogglePublished();
                     }
                 });
-                $('#campionamenti_creati').off().on('click' , '.toggle-group' , function () {
+                $('#created_forms').off().on('click' , '.toggle-group' , function () {
                     $('.isPublished').change(function () {
 
                         var id = $(this).closest('tr').find('td:first-of-type').text();
                         var isPublished = $(this).prop('checked');
-                        $.post("/campionamenti/update-published", {
+                        $.post("/builderForms/update-published", {
                             id: id,
                             isPublished: isPublished
                         }).done(function (data) {
@@ -365,7 +365,7 @@ $(document).ready(function(){
                                 location.reload();
                             }
                             else {
-                                swal('Errore con il database');
+                                swal('Error in DB!');
                             }
                         });
                     });
@@ -380,10 +380,10 @@ $(document).ready(function(){
 
 
 
-         $('#campionamenti_creati').off().on('click', '.edit-data' , function () {
-             $('#compilati-table-box').addClass('hidden');
+         $('#created_forms').off().on('click', '.edit-data' , function () {
+             $('#form-table-box').addClass('hidden');
              $('#first-box').hide();
-             $('.torna-indietro').hide();
+             $('.go-back').hide();
 
 
              var editForm;
@@ -392,7 +392,7 @@ $(document).ready(function(){
              $('.fb-editor').empty();
              $('.form-editing').hide();
              $.ajax({
-                 url: 'campionamenti/get-categories',
+                 url: 'builderForms/get-categories',
                  type: 'post',
 
                  success: function (data) {
@@ -406,7 +406,7 @@ $(document).ready(function(){
 
              var id = $(this).attr('id');
              $.ajax({
-                 url: 'campionamenti/get-item',
+                 url: 'builderForms/get-item',
                  type: 'post',
                  data : {
                      'id' : id
@@ -416,9 +416,9 @@ $(document).ready(function(){
                  },
                  success : function (data) {
                      $('.loader').addClass('hidden');
-                     editForm = data[0].campionamento[0];
+                     editForm = data[0].formcomplite[0];
                      $('#edit-form').removeClass('hidden');
-                     $('.edit-camp-title').text('').text(data[0].titolo);
+                     $('.edit-camp-title').text('').text(data[0].title);
                      $('#edit-id').val(data[0]._id);
 
                      $('.edit-fb-render').formRender({
@@ -428,11 +428,11 @@ $(document).ready(function(){
 
                      $('#editCategoria').val( [data[0].categoria]);
 
-
+                     //go-back-without-modification
 
                      $('.formRender-edit-form').off().on('click' , function () {
-                         $('.torna-indietro').show();
-                         $('.torna-indietro-senza-modificare').hide();
+                         $('.go-back').show();
+                         $('.go-back-without-modification').hide();
                          $('.formRender-edit-form').hide();
                          $('.edit-fb-render').hide();
                          $('.form-editing').show();
@@ -453,7 +453,7 @@ $(document).ready(function(){
                                  'value'
                              ],
                              dataType: 'json',
-                             formData : data[0].campionamento[0],
+                             formData : data[0].formcomplite[0],
                              onSave: function onSave(evt, formData) {saveForm(formData);}
                          };
                          template.formBuilder(options);
@@ -464,12 +464,12 @@ $(document).ready(function(){
                  }
              })
          });
-         $('.torna-indietro-senza-modificare').off().on('click' , function () {
+         $('.go-back-without-modification').off().on('click' , function () {
             $('#edit-form').addClass('hidden');
             $('#first-box').show();
-             $('#campionamenti_creati').DataTable().destroy();
-             $('#campionamenti_creati tbody').empty();
-             var table = $('#campionamenti_creati').DataTable({
+             $('#created_forms').DataTable().destroy();
+             $('#created_forms tbody').empty();
+             var table = $('#created_forms').DataTable({
                  "paging": true,
                  "searching": true,
                  "ordering": true,
@@ -483,7 +483,7 @@ $(document).ready(function(){
                  "pageLength": 30,
                  responsive: true,
                  ajax: {
-                     url: "/campionamenti/get-all",
+                     url: "/builderForms/get-all",
                      type: "POST",
                      dataSrc: "data"
                  },
@@ -494,7 +494,7 @@ $(document).ready(function(){
                      }, {
                          "mData": "title"
                      },{
-                         "mData": "categoria"
+                         "mData": "category"
                      }, {
                          "mData": "createdBy"
                      }, {
@@ -504,21 +504,21 @@ $(document).ready(function(){
                          "mData": null,
                          "bSortable": false,
                          "mRender": function (o) {
-                             return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="SI" data-off="NO"></td>'
+                             return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="YES" data-off="NO"></td>'
                          }
                      },
                      {
                          "mData": null,
                          "bSortable": false,
                          "mRender": function (o) {
-                             return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> Piu Dettagli</button>'
+                             return '<button type="button" onclick="showDetails()" class="btn btn-sm btn-primary toogle-modal"><i class="fa fa-table"></i> hape</button>'
                          }
                      },
                      {
                          "mData": null,
                          "bSortable": false,
                          "mRender": function (o) {
-                             return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Modifica</button>'
+                             return '<button type="button" id="'+ o._id +'" onclick="editDetails()" class="btn btn-sm btn-default edit-data"><i class="fa fa-edit"></i> Edit</button>'
                          }
                      }
                  ],
@@ -526,12 +526,12 @@ $(document).ready(function(){
                      initTogglePublished();
                  }
              });
-             $('#campionamenti_creati').off().on('click' , '.toggle-group' , function () {
+             $('#created_forms').off().on('click' , '.toggle-group' , function () {
                  $('.isPublished').change(function () {
 
                      var id = $(this).closest('tr').find('td:first-of-type').text();
                      var isPublished = $(this).prop('checked');
-                     $.post("/campionamenti/update-published", {
+                     $.post("/builderForms/update-published", {
                          id: id,
                          isPublished: isPublished
                      }).done(function (data) {
@@ -539,7 +539,7 @@ $(document).ready(function(){
                              location.reload();
                          }
                          else {
-                             swal('Errore con il database');
+                             swal('Error in DB!');
                          }
                      });
                  });
@@ -582,7 +582,7 @@ function saveForm(formData) {
         $.ajax({
 
             type: "POST",
-            url: "/campionamenti/saveEdited",
+            url: "/builderForms/saveEdited",
             data: {
                 "htmlForm": formData,
                 "title": titleVal,
