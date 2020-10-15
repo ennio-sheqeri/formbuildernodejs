@@ -3,7 +3,13 @@ var router = express.Router();
 var Forms = require('../models/createform');
 var Category = require('../models/category');
 router.get('/',function (req,res,next){
-    res.render('admin');
+
+    Category.find().lean().exec(function (err, result) {
+        var info = {
+            dropdownVals: result
+        };
+        res.render('formuilder', info );
+    })
 });
 
 router.post('/save',function (req,res,next){
@@ -11,13 +17,13 @@ router.post('/save',function (req,res,next){
     var data = req.body.htmlForm;
     var category = req.body.category;
     var published = req.body.published;
-if(published=='yes') {
+if(published=='Yes') {
     var form = new Forms({
         title: title,
         form: data,
         category: category,
         published: true,
-        createdBy: req.user.name
+        createdBy: "Admin"
         });
     }
     else{
@@ -26,7 +32,7 @@ if(published=='yes') {
         form: data,
         category: category,
         published: false,
-        createdBy: req.user.name
+        createdBy: "Admin"
     });
 }
     Forms.find({
@@ -57,7 +63,7 @@ if(published=='yes') {
 
 router.post('/newCategory',function (req,res,next){
     var category = req.body.adminnameCa;
-    var userCreate = req.user.name;
+    var userCreate = 'admin';
     var publishedCat = req.body.adminCatPublished;
     var categories;
     var exist;
@@ -81,6 +87,7 @@ router.post('/newCategory',function (req,res,next){
             else {
                 categories.save(function (err){
                     if(err){
+                        console.log(err)
                         exist='Error during save forms in DB';
                         res.send(exist);
                     }

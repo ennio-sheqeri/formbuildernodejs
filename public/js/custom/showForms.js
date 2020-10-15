@@ -14,7 +14,7 @@ $(document).ready(function(){
         "pageLength": 30,
         responsive: true,
         ajax: {
-            url: "/builderForms/get-all",
+            url: "/createfoms/get-all",
             type: "POST",
             dataSrc: "data"
         },
@@ -35,7 +35,7 @@ $(document).ready(function(){
                 "mData": null,
                 "bSortable": false,
                 "mRender": function (o) {
-                    return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="Yes" data-off="NO"></td>'
+                    return '<input type="checkbox" class="isPublished" data-toggle="toggle" data-isPublished= '+o.published+' data-on="Yes" data-off="NO">'
                 }
             },
             {
@@ -65,7 +65,7 @@ $(document).ready(function(){
 
             var id = $(this).closest('tr').find('td:first-of-type').text();
             var isPublished = $(this).prop('checked');
-            $.post("/builderForms/update-published", {
+            $.post("/forms/update-published", {
                 id: id,
                 isPublished: isPublished
             }).done(function (data) {
@@ -106,7 +106,7 @@ $(document).ready(function(){
             $.fn.dataTable.ext.errMode = 'none';
 
             $.ajax({
-                url: "/builderForms/get-filled",
+                url: "/forms/get-filled",
                 type: 'post',
                 data:  {
                     "id" : id,
@@ -173,7 +173,7 @@ $(document).ready(function(){
                                 $('#deleteRow').click( function () {
 
                                     $.ajax({
-                                        url: 'builderForms/delete-item',
+                                        url: 'forms/delete-item',
                                         type: 'post',
                                         data : {
                                             time: time,
@@ -199,7 +199,7 @@ $(document).ready(function(){
                 $.fn.dataTable.ext.errMode = 'none';
 
                 $.ajax({
-                    url: "/builderForms/get-filled",
+                    url: "/forms/get-filled",
                     type: 'post',
                     data:  {
                         "id" : id,
@@ -266,7 +266,7 @@ $(document).ready(function(){
                                     $('#deleteRow').click( function () {
 
                                         $.ajax({
-                                            url: 'builderForms/delete-item',
+                                            url: 'forms/delete-item',
                                             type: 'post',
                                             data : {
                                                 time: time,
@@ -309,7 +309,7 @@ $(document).ready(function(){
                     "pageLength": 30,
                     responsive: true,
                     ajax: {
-                        url: "/builderForms/get-all",
+                        url: "/forms/get-all",
                         type: "POST",
                         dataSrc: "data"
                     },
@@ -357,7 +357,7 @@ $(document).ready(function(){
 
                         var id = $(this).closest('tr').find('td:first-of-type').text();
                         var isPublished = $(this).prop('checked');
-                        $.post("/builderForms/update-published", {
+                        $.post("/forms/update-published", {
                             id: id,
                             isPublished: isPublished
                         }).done(function (data) {
@@ -392,7 +392,7 @@ $(document).ready(function(){
              $('.fb-editor').empty();
              $('.form-editing').hide();
              $.ajax({
-                 url: 'builderForms/get-categories',
+                 url: 'forms/get-categories',
                  type: 'post',
 
                  success: function (data) {
@@ -406,7 +406,7 @@ $(document).ready(function(){
 
              var id = $(this).attr('id');
              $.ajax({
-                 url: 'builderForms/get-item',
+                 url: 'forms/get-item',
                  type: 'post',
                  data : {
                      'id' : id
@@ -483,7 +483,7 @@ $(document).ready(function(){
                  "pageLength": 30,
                  responsive: true,
                  ajax: {
-                     url: "/builderForms/get-all",
+                     url: "/forms/get-all",
                      type: "POST",
                      dataSrc: "data"
                  },
@@ -531,7 +531,7 @@ $(document).ready(function(){
 
                      var id = $(this).closest('tr').find('td:first-of-type').text();
                      var isPublished = $(this).prop('checked');
-                     $.post("/builderForms/update-published", {
+                     $.post("/forms/update-published", {
                          id: id,
                          isPublished: isPublished
                      }).done(function (data) {
@@ -582,7 +582,7 @@ function saveForm(formData) {
         $.ajax({
 
             type: "POST",
-            url: "/builderForms/saveEdited",
+            url: "/forms/saveEdited",
             data: {
                 "htmlForm": formData,
                 "title": titleVal,
